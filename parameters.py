@@ -6,7 +6,8 @@ batch_size = 100
 n_epochs = 1000
 learning_rate = 0.001
 beta1 = 0.9
-results_path = './Results/AutoEncoders'
+results_path = './Results/Autoencoders'
+display_step = 10
 
 def add():
     print('boo')

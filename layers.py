@@ -24,7 +24,7 @@ def encoder(x,reuse=False):
         tf.get_variable_scope().reuse_variables()
     with tf.name_scope('Encoder'):
         e_dense_1 = tf.nn.relu(dense(x,par.n_input,par.n_l1,'e_dense_1'))
-        e_dense_2 = tf.nn.relu(dense(e_dense_1, par.n_l1, par.n_l2, 'e_dense_1'))
+        e_dense_2 = tf.nn.relu(dense(e_dense_1, par.n_l1, par.n_l2, 'e_dense_2'))
         latent_variable = dense(e_dense_2,par.n_l2,par.z_dim,'e_latent_variable')
         return latent_variable
 
@@ -34,7 +34,7 @@ def decoder(x,reuse=False):
     if reuse:
         tf.get_variable_scope().reuse_variables()
     with tf.name_scope('Decoder'):
-        d_dense_1 = tf.nn.relu(x,par.z_dim,par.n_l2,'d_dense_1')
-        d_dense_2 = tf.nn.relu(d_dense_1,par.n_l2,par.n_l1,'d_dense_2')
+        d_dense_1 = tf.nn.relu(dense(x,par.z_dim,par.n_l2,'d_dense_1'))
+        d_dense_2 = tf.nn.relu(dense(d_dense_1,par.n_l2,par.n_l1,'d_dense_2'))
         output = tf.nn.sigmoid(dense(d_dense_2,par.n_l1,par.n_input,'d_output'))
         return output
