@@ -1,0 +1,4 @@
+Epoch: 0, iteration: 0
+Loss: 0.23093730211257935
+Epoch: 0, iteration: 1
+Loss: 0.23170550167560577
